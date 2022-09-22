@@ -1,0 +1,4 @@
+hostname: {{ item.name }}
+device_id: {{ansible_loop.index + 10}}
+router_id: 172.16.0.{{ansible_loop.index + 10}}
+local_as: 650{{ansible_loop.index + 10}}

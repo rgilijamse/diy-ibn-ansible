@@ -1,0 +1,6 @@
+leaves:
+{% for id in range(0,leaves|length) %}
+  - device_id: {{ id + 11 }}
+    router_id: 172.16.0.{{id+11}}
+    as: 650{{id+11}}
+{% endfor %}

@@ -1,0 +1,9 @@
+[spines]
+{% for device in spines: %}
+{{ device.name }} ansible_host={{device.mgmt_ip}}
+{% endfor %}
+
+[leaves]
+{% for device in leaves: %}
+{{ device.name }} ansible_host={{device.mgmt_ip}}
+{% endfor %}

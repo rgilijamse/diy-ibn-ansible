@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+  - name: load intent
+    ansible.builtin.include_vars: intent.yaml
+  - name: create hosts file
+    ansible.builtin.template:
+      src: ./inventory_templates/hosts.j2
+      dest: ./inventory/hosts 
+  - name: create group vars
+    ansible.builtin.template:
+      src: ./inventory_templates/{{item}}.j2
+      dest: ./inventory/group_vars/{{item}}
+    loop:
+      - leaves.yaml
+      - spines.yaml
+  - name: create host vars for spines
+    ansible.builtin.template:
+      src: ./inventory_templates/host_vars-spine.yaml.j2
+      dest: ./inventory/host_vars/{{item.name}}.yaml
+    loop: "{{spines}}"
+    loop_control:
+      extended: yes
+  - name: create host vars for leaves
+    ansible.builtin.template:
+      src: ./inventory_templates/host_vars-leaf.yaml.j2
+      dest: ./inventory/host_vars/{{item.name}}.yaml
+    loop: "{{leaves}}"
+    loop_control:
+      extended: yes

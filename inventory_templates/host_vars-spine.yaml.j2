@@ -1,0 +1,3 @@
+hostname: {{ item.name }}
+device_id: {{ansible_loop.index + 1}}
+router_id: 172.16.0.{{ansible_loop.index + 1}}
