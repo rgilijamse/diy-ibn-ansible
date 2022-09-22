@@ -1,0 +1,14 @@
+---
+spines:
+  - name: R1
+    mgmt_ip: 10.255.255.101
+  - name: R2
+    mgmt_ip: 10.255.255.102
+
+leaves:
+  - name: R3
+    mgmt_ip: 10.255.255.103
+  - name: R4
+    mgmt_ip: 10.255.255.104
+  - name: R5
+    mgmt_ip: 10.255.255.105
