@@ -1,0 +1,12 @@
+system {
+    host-name {{hostname}};
+}
+protocols {
+    lldp {
+        interface all;
+    }
+}
+
+{% include 'leaf-interfaces.j2' %}
+
+{% include 'leaf-routing.j2' %}

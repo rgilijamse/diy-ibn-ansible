@@ -1,0 +1,12 @@
+system {
+    host-name {{hostname}};
+}
+protocols {
+    lldp {
+        interface all;
+    }
+}
+
+{% include 'spine-interfaces.j2' %}
+
+{% include 'spine-routing.j2' %}

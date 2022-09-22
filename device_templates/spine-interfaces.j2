@@ -1,0 +1,19 @@
+interfaces {
+{% for device in leaves: %}
+    replace: xe-0/0/{{ device.device_id - 11}} {
+        description "to-leaf {{ device.device_id}}";
+        unit 0 {
+            family inet {
+                address 172.16.{{device_id}}.{{ device.device_id }}0/31;
+            }
+        }
+    }
+{% endfor %}
+    lo0 {
+        unit 0 {
+            family inet {
+                address {{router_id}}/32;
+            }
+        }
+    }
+}
