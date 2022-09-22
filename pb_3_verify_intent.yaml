@@ -1,0 +1,19 @@
+---
+- hosts: spines
+  gather_facts: false
+  connection: ansible.netcommon.netconf
+  tasks:
+  - name: collect BGP summary
+    junipernetworks.junos.junos_rpc:
+      rpc: get-bgp-summary-information
+      output: xml
+    register: response
+  - name: parse XML response
+    set_fact:
+      parsed_xml_data: "{{ response['output'][0] | parse_xml('bgp_parser.spec') }}"
+  - name: check if each leaf peering is "Established"
+    assert:
+      that: (parsed_xml_data['result']|selectattr("address", "equalto", "{{item.router_id}}"))[0].state == "Established"
+      quiet: true
+      fail_msg: "{{item.router_id}} peering not established"
+    loop: "{{ leaves }}"
