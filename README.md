@@ -1,0 +1,1 @@
+ansible-playbook -i localhost, pb_update_inventory.yaml
