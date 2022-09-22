@@ -1,0 +1,10 @@
+set system root-authentication encrypted-password "$6$I47y.mks$qM.BuTKaqAu55QIcylld9jCCZy6cru4RL3xCuuzDtLoRXJYl8J2XnbinzV1zi63b4BBieSonbUv0R0DU6X3Ww."
+set system login user admin class super-user
+set system login user admin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBJHapErtqLPUaWApHq9+RkCKWCMbkzxZhtuNlsL+t9CNCD9bFSKTYMxQQfN5ZITSj4RbvtnRGvFyl8RwqM0c/w9wHDaAs3gcQQMDMguYYs4Ucrzx/rcucenA8aBFzTJZZvIdHFLPSGI2KimE/ZfFj5LiG0f+n6kSeMad5JMxSM5yUMZQiSoXUzOT9exRDyzmVYx4QeTaAIkdPh2YmaaWLN0wI0yUdUKLtw/gtDmEij+PtgqO8JO+8AnY3oYwXG/z9K3gHu5yBpJ8Q8CfzmdZUY0BtUqPZu7e8SpnnYr7lp13Tdd4vl93Plm3ulOZB5Ws7tv6NYgthC2J6QjO2Dz/N user@debian"
+
+wildcard delete interfaces et-
+wildcard delete interfaces xe-
+
+set interfaces em0 unit 0 family inet address 10.255.255.105/24
+set system services netconf ssh
+
