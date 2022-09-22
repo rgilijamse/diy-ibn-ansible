@@ -13,7 +13,9 @@
       parsed_xml_data: "{{ response['output'][0] | parse_xml('bgp_parser.spec') }}"
   - name: check if each leaf peering is "Established"
     assert:
-      that: (parsed_xml_data['result']|selectattr("address", "equalto", "{{item.router_id}}"))[0].state == "Established"
+      that:
+      - parsed_xml_data['result']|selectattr("address", "equalto", "{{item.router_id}}")
+      - (parsed_xml_data['result']|selectattr("address", "equalto", "{{item.router_id}}"))[0].state == "Established"
       quiet: true
       fail_msg: "{{item.router_id}} peering not established"
     loop: "{{ leaves }}"
