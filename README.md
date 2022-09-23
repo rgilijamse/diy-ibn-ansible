@@ -1,6 +1,6 @@
-# DYI Intent-based Networking with Ansible
+# DIY Intent-based Networking with Ansible
 
-This repo contains code used for the demo in my "DYI IBN" presentation for [NLNOG Day 2022](https://nlnog.net/nlnog-day-2022-the-20th-anniversary-edition/).
+This repo contains code used for the demo in my "DIY IBN" presentation for [NLNOG Day 2022](https://nlnog.net/nlnog-day-2022-the-20th-anniversary-edition/).
 
 ## Description
 I have build a very bare-bones and simple example for an "Intent Based Network System", just to see if I can and to figure out what components such a system needs. I've tried to keep it as clean as possible, and use only Ansible (with Jinja2 templating) as logic engine.
