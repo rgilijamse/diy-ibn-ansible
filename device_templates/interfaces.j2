@@ -1,0 +1,19 @@
+interfaces {
+{% for interface in interfaces %}
+    replace: {{ interface.name }} {
+        description {{interface.description}};
+        unit 0 {
+            family inet {
+                address {{ interface.address }};
+            }
+        }
+    }
+{% endfor %}
+    lo0 {
+        unit 0 {
+            family inet {
+                address {{loopback_address}}/32;
+            }
+        }
+    }
+}

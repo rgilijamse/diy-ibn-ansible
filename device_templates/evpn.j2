@@ -1,0 +1,12 @@
+protocols {
+    evpn {
+        encapsulation vxlan;
+        multicast-mode ingress-replication;
+        extended-vni-list all;
+    }
+}
+switch-options {
+    vtep-source-interface lo0.0;
+    route-distinguisher {{router_id}}:1;
+    vrf-target target:65000:1;
+}

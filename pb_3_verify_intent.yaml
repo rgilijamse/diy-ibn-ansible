@@ -18,4 +18,4 @@
       - (parsed_xml_data['result']|selectattr("address", "equalto", "{{item.router_id}}"))[0].state == "Established"
       quiet: true
       fail_msg: "{{item.router_id}} peering not established"
-    loop: "{{ leaves }}"
+    loop: "{{ peers }}"
