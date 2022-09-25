@@ -1,0 +1,31 @@
+routing-options {
+    router-id {{router_id}};
+}
+protocols {
+    bgp {
+        replace: group OVERLAY {
+            type external;
+            multihop;
+            local-address {{loopback_address}};
+            family evpn {
+                signaling;
+            }
+            local-as {{local_as}};
+{% for peer in peers %}
+            neighbor {{peer.address}} {
+                peer-as {{peer.as}};
+            }
+{% endfor %}
+        }
+    }
+    ospf {
+        replace: area 0.0.0.0 {
+            interface lo0.0 {
+                passive;
+            }
+{% for peer in peers %}
+            interface {{peer.interface}};
+{% endfor %}
+        }
+    }
+}

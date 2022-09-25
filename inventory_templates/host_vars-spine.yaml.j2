@@ -1,3 +1,15 @@
 hostname: {{ item.name }}
 device_id: {{ansible_loop.index}}
+device_role: "spine"
+
 router_id: 172.16.0.{{ansible_loop.index}}
+loopback_address: 172.16.0.{{ansible_loop.index}}
+
+local_as: 65000
+
+interfaces:
+{% for id in range(0,leaves|length) %}
+  - name: "xe-0/0/{{id}}"
+    description: "to leave {{id+11}}"
+    address: 172.16.{{ansible_loop.index}}.{{ id+11 }}0/31
+{% endfor %}

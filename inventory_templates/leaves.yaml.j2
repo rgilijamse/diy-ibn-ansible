@@ -1,5 +1,6 @@
-spine_as: 65000
-spines:
+peers:
 {% for id in range(0,spines|length) %}
-  - 172.16.0.{{id+1}}
+  - address: 172.16.0.{{id+1}}
+    as: 65000
+    interface: "xe-0/0/{{id}}.0"
 {% endfor %}

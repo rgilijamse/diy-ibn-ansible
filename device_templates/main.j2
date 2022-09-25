@@ -1,0 +1,16 @@
+system {
+    host-name {{hostname}};
+}
+protocols {
+    lldp {
+        interface all;
+    }
+}
+
+{% include 'interfaces.j2' %}
+
+{% include 'routing.j2' %}
+
+{% if device_role == "leaf" %}
+{% include 'evpn.j2' %}
+{% endif %}

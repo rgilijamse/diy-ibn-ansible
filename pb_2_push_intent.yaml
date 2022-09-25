@@ -3,18 +3,11 @@
   gather_facts: false
   connection: ansible.netcommon.netconf
   tasks:
-  - name: render spine templates
+  - name: render templates
     ansible.builtin.template:
-      src: device_templates/spine.j2
+      src: device_templates/main.j2
       dest: configs/{{inventory_hostname}}.txt
     delegate_to: localhost
-    when: "'spines' in group_names"
-  - name: render leaf templates
-    ansible.builtin.template:
-      src: device_templates/leaf.j2
-      dest: configs/{{inventory_hostname}}.txt
-    delegate_to: localhost
-    when: "'leaves' in group_names"
   - name: push configs to device
     junipernetworks.junos.junos_config:
       src: configs/{{inventory_hostname}}.txt

@@ -1,4 +1,14 @@
 hostname: {{ item.name }}
 device_id: {{ansible_loop.index + 10}}
+device_role: "leaf"
+
 router_id: 172.16.0.{{ansible_loop.index + 10}}
+loopback_address: 172.16.0.{{ansible_loop.index + 10}}
 local_as: 650{{ansible_loop.index + 10}}
+
+interfaces:
+{% for id in range(0,spines|length) %}
+  - name: "xe-0/0/{{id}}"
+    description: "to spine R{{id+1}}"
+    address: 172.16.{{id+1}}.{{ ansible_loop.index + 10 }}1/31
+{% endfor %}
