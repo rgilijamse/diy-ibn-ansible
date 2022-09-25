@@ -14,8 +14,8 @@
   - name: check if each leaf peering is "Established"
     assert:
       that:
-      - parsed_xml_data['result']|selectattr("address", "equalto", "{{item.router_id}}")
-      - (parsed_xml_data['result']|selectattr("address", "equalto", "{{item.router_id}}"))[0].state == "Established"
+      - parsed_xml_data['result']|selectattr("address", "equalto", "{{item.address}}")
+      - (parsed_xml_data['result']|selectattr("address", "equalto", "{{item.address}}"))[0].state == "Established"
       quiet: true
-      fail_msg: "{{item.router_id}} peering not established"
+      fail_msg: "{{item.address}} peering not established"
     loop: "{{ peers }}"

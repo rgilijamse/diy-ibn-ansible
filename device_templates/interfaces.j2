@@ -1,7 +1,7 @@
 interfaces {
 {% for interface in interfaces %}
     replace: {{ interface.name }} {
-        description {{interface.description}};
+        description "{{interface.description}}";
         unit 0 {
             family inet {
                 address {{ interface.address }};

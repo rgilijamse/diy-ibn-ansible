@@ -10,5 +10,5 @@ interfaces:
 {% for id in range(0,spines|length) %}
   - name: "xe-0/0/{{id}}"
     description: "to spine R{{id+1}}"
-    address: 172.16.{{id+1}}.{{ ansible_loop.index + 10 }}1/31;
+    address: 172.16.{{id+1}}.{{ ansible_loop.index + 10 }}1/31
 {% endfor %}
