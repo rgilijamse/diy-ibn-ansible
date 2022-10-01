@@ -10,4 +10,3 @@ mkdir configs
 mkdir inventory
 mkdir inventory/host_vars
 mkdir inventory/group_vars
-cp inventory_templates/group_vars/* inventory/group_vars
