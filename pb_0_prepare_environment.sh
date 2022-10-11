@@ -10,3 +10,6 @@ mkdir configs
 mkdir inventory
 mkdir inventory/host_vars
 mkdir inventory/group_vars
+
+# copy connection veriables
+cp inventory_templates/all.yaml inventory/group_vars/
